@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Landoop/sql-core.svg?branch=master)](https://travis-ci.org/Landoop/sql-core)
+
 # sql-core
 The basic lib supporting our json-sql, avro-sql and kafka-connect-sql-smt
 
