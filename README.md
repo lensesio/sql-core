@@ -1,7 +1,9 @@
-[![Build Status](https://travis-ci.org/Landoop/sql-core.svg?branch=master)](https://travis-ci.org/Landoop/sql-core)
+![Build Tests](https://github.com/lensesio/sql-core/workflows/build/badge.svg)
 
 # sql-core
 The basic lib supporting our json-sql, avro-sql and kafka-connect-sql-smt
+
+**2.0 (2020-1-1)**
 
 **0.1 (2017-04-18)**
 
