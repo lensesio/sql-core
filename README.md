@@ -5,6 +5,8 @@ The basic lib supporting our json-sql, avro-sql and kafka-connect-sql-smt
 
 **2.0 (2020-1-1)**
 
+* Update to scala 2.12
+
 **0.1 (2017-04-18)**
 
 * first release
