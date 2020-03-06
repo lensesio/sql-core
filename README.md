@@ -13,7 +13,7 @@ The basic lib supporting our json-sql, avro-sql and kafka-connect-sql-smt
 
 ### Building
 
-***Requires gradle 3.4.1 to build.***
+***Requires gradle 5.0 to build.***
 
 To build
 
