@@ -17,7 +17,7 @@ package com.landoop.sql
 
 import org.apache.calcite.sql._
 
-import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
 
 case class Field(name: String, alias: String, parents: Vector[String]) {
   def hasParents: Boolean = parents != null && parents.nonEmpty
@@ -25,16 +25,16 @@ case class Field(name: String, alias: String, parents: Vector[String]) {
 
 object Field {
   def from(sql: SqlSelect): Seq[Field] = {
-    sql.getSelectList.map {
+    sql.getSelectList.asScala.map {
       case id: SqlIdentifier =>
-        val parents = (0 until id.names.length - 1).foldLeft(Vector.empty[String]) { (acc, i) =>
+        val parents = (0 until id.names.asScala.length - 1).foldLeft(Vector.empty[String]) { (acc, i) =>
           val parent = id.names.get(i)
           acc :+ parent
         }
         if (id.isStar) {
           Field("*", "*", if(parents.isEmpty) null else parents)
         } else {
-          Field(id.names.last, id.names.last, if(parents.isEmpty) null else parents)
+          Field(id.names.asScala.last, id.names.asScala.last, if(parents.isEmpty) null else parents)
         }
       case as: SqlCall if as.getKind == SqlKind.AS && as.operandCount() == 2 =>
         val left: SqlIdentifier = as.operand[SqlNode](0) match {
@@ -47,11 +47,11 @@ object Field {
           case other => throw new IllegalArgumentException(s"$as [${as.getClass.getCanonicalName}] is not handled for now!")
         }
 
-        val parents = (0 until left.names.length - 1).foldLeft(Vector.empty[String]) { (acc, i) =>
+        val parents = (0 until left.names.asScala.length - 1).foldLeft(Vector.empty[String]) { (acc, i) =>
           val parent = left.names.get(i)
           acc :+ parent
         }
-        Field(left.names.last, right.names.last, if(parents.isEmpty) null else parents)
+        Field(left.names.asScala.last, right.names.asScala.last, if(parents.isEmpty) null else parents)
 
       case other => throw new IllegalArgumentException(s"$other [${other.getClass.getCanonicalName}] is not handled for now!")
     }.toSeq
