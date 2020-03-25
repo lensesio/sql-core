@@ -1,4 +1,4 @@
-![Gradle build](https://github.com/lensesio/sql-core/workflows/Gradle%20build/badge.svg)
+![Actions Status](https://github.com/lensesio/sql-core/workflows/CI/badge.svg)
 
 # sql-core
 The basic lib supporting our json-sql, avro-sql and kafka-connect-sql-smt
