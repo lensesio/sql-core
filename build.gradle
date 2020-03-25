@@ -6,9 +6,9 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.github.maiflai:gradle-scalatest:0.14'
+        classpath 'com.github.maiflai:gradle-scalatest:0.19'
         classpath 'io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.5.3'
-        classpath 'net.researchgate:gradle-release:2.3.4'
+        classpath 'net.researchgate:gradle-release:2.8.1'
     }
 }
 
@@ -28,14 +28,14 @@ allprojects {
     targetCompatibility = 1.8
 
     ext {
-        scalaMajorVersion = '2.11'
-        scala = '2.11.8'
-        scalaCheck = '1.11.1'
-        scalaTest = '2.2.6'
+        scalaMajorVersion = '2.12'
+        scala = '2.12.8'
+        scalaCheck = '1.14.1'
+        scalaTest = '3.0.8'
         junitVersion = '4.12'
         calciteVersion = "1.12.0"
-        scalaLoggingVersion = '2.1.2'
-        mockitoVersion = '2.7.13'
+        scalaLoggingVersion = '3.9.2'
+        mockitoVersion = '2.12.0'
         slf4jVersion = "1.7.7"
     }
 
@@ -44,6 +44,8 @@ allprojects {
         mavenCentral()
         maven { url "http://packages.confluent.io/maven/" }
         maven { url "http://repo.typesafe.com/typesafe/releases/" }
+        maven { url "https://mvnrepository.com/artifact" }
+
     }
 
     configurations {
@@ -53,7 +55,8 @@ allprojects {
 
     dependencies {
         compile "org.scala-lang:scala-library:$scala"
-        compile "com.typesafe.scala-logging:scala-logging-slf4j_$scalaMajorVersion:$scalaLoggingVersion"
+        // compile "com.typesafe.scala-logging:scala-logging-slf4j_$scalaMajorVersion:$scalaLoggingVersion"
+        compile group: 'com.typesafe.scala-logging', name: 'scala-logging_2.12', version: '3.9.2'
 
         compile ("org.apache.calcite:calcite-core:$calciteVersion")
 
