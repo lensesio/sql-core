@@ -21,7 +21,7 @@ jobs:
         GRADLE_PROPERTIES: ${{ secrets.GRADLE_PROPERTIES }}
         SIGNING_GPG_KEY: ${{ secrets.SIGNING_GPG_KEY }}
       run: |
-        cat "$GRADLE_PROPERTIES" > gradle.properties
+        echo "$GRADLE_PROPERTIES" > gradle.properties
         echo -e "\nsigning.secretKeyRingFile=$SIGNING_GPG_KEY" >> gradle.properties
     - name: Upload archive
       run: ./gradlew clean build uploadArchives
