@@ -24,4 +24,4 @@ jobs:
         base64 -d <<< "$SIGNING_GPG_KEY" > /tmp/secring.gpg
         echo "$GRADLE_PROPERTIES" > gradle.properties
     - name: Upload archive
-      run: ./gradlew clean build uploadArchives
+      run: ./gradlew -Prelease clean build uploadArchives
